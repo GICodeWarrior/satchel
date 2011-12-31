@@ -1,0 +1,5 @@
+name: Satchel
+version: 0.9
+description: This plug-in provides multi-world inventory, health, gamemode, and location management.
+author: Rusty Burchfield
+main: net.gicode.satchel.Plugin
