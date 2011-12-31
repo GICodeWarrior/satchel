@@ -32,9 +32,9 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * TODO: Describe type
+ * Provides access to save and load satchel data for a specific player.
  */
-public class PlayerStorage {
+public class SatchelStorage {
   private static final int DEFAULT_HEALTH = 20;
   private static final int DEFAULT_FOOD_LEVEL = 20;
   private static final float DEFAULT_EXHAUSTION = 0.0f;
@@ -47,7 +47,7 @@ public class PlayerStorage {
   private File file;
   private FileConfiguration storage;
 
-  public PlayerStorage(Plugin plugin, String player, String satchel) {
+  public SatchelStorage(Plugin plugin, String player, String satchel) {
     this.plugin = plugin;
     this.player = player;
     this.satchel = satchel;
@@ -121,7 +121,7 @@ public class PlayerStorage {
     if (raw == null) {
       return null;
     }
-    
+
     List<ItemStack> stacks = new ArrayList<ItemStack>();
     for (Object stack : raw) {
       stacks.add((ItemStack) stack);

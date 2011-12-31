@@ -30,7 +30,8 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.plugin.PluginManager;
 
 /**
- * TODO: Describe type
+ * Registers for events to know when players join and leave worlds. Uses these
+ * events to load and save the players satchels.
  */
 public class PlayerListener extends org.bukkit.event.player.PlayerListener {
   private Plugin plugin;
@@ -53,7 +54,7 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
   public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
     debug("changed world", event.getPlayer(), event.getFrom(), null);
 
-    PlayerLoadAction action = new PlayerLoadAction(plugin, event.getPlayer(),
+    SatchelLoadAction action = new SatchelLoadAction(plugin, event.getPlayer(),
         event.getFrom());
     action.execute();
   }
@@ -62,7 +63,7 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
   public void onPlayerJoin(PlayerJoinEvent event) {
     debug("join", event.getPlayer(), null, null);
 
-    PlayerLoadAction action = new PlayerLoadAction(plugin, event.getPlayer(),
+    SatchelLoadAction action = new SatchelLoadAction(plugin, event.getPlayer(),
         null);
     action.execute();
   }
@@ -71,7 +72,7 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
   public void onPlayerPortal(PlayerPortalEvent event) {
     debug("portal", event.getPlayer(), event.getFrom(), event.getTo());
 
-    PlayerSaveAction action = new PlayerSaveAction(plugin, event.getPlayer());
+    SatchelSaveAction action = new SatchelSaveAction(plugin, event.getPlayer());
     action.execute();
   }
 
@@ -79,7 +80,7 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
   public void onPlayerQuit(PlayerQuitEvent event) {
     debug("quit", event.getPlayer(), null, null);
 
-    PlayerSaveAction action = new PlayerSaveAction(plugin, event.getPlayer());
+    SatchelSaveAction action = new SatchelSaveAction(plugin, event.getPlayer());
     action.execute();
   }
 
@@ -87,7 +88,7 @@ public class PlayerListener extends org.bukkit.event.player.PlayerListener {
   public void onPlayerTeleport(PlayerTeleportEvent event) {
     debug("teleport", event.getPlayer(), event.getFrom(), event.getTo());
 
-    PlayerSaveAction action = new PlayerSaveAction(plugin, event.getPlayer());
+    SatchelSaveAction action = new SatchelSaveAction(plugin, event.getPlayer());
     action.execute();
   }
 

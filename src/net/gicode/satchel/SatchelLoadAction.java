@@ -32,14 +32,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 /**
- * TODO: Describe type
+ * Loads the satchel data for a specific player.
  */
-public class PlayerLoadAction {
+public class SatchelLoadAction {
   private Plugin plugin;
   private Player player;
   private Set<Satchel> previousSatchels;
 
-  public PlayerLoadAction(Plugin plugin, Player player, World previousWorld) {
+  public SatchelLoadAction(Plugin plugin, Player player, World previousWorld) {
     this.plugin = plugin;
     this.player = player;
 
@@ -62,7 +62,7 @@ public class PlayerLoadAction {
 
       plugin.debug("Loading satchel '" + satchel.getName() + "' for player '"
           + player.getName() + "'.");
-      PlayerStorage storage = new PlayerStorage(plugin, player.getName(),
+      SatchelStorage storage = new SatchelStorage(plugin, player.getName(),
           satchel.getName());
       PlayerInventory inventory = player.getInventory();
 
@@ -80,7 +80,7 @@ public class PlayerLoadAction {
           // TODO: player.setBedSpawnLocation(storage.getBedLocation());
         }
         else if (attribute.equals("experience")) {
-          PlayerStorage.Experience experience = storage.getExperience();
+          SatchelStorage.Experience experience = storage.getExperience();
           player.setLevel(experience.getLevel());
           player.setExp(experience.getPartial());
         }
@@ -91,7 +91,7 @@ public class PlayerLoadAction {
           player.setHealth(storage.getHealth());
         }
         else if (attribute.equals("hunger")) {
-          PlayerStorage.Hunger hunger = storage.getHunger();
+          SatchelStorage.Hunger hunger = storage.getHunger();
           player.setFoodLevel(hunger.getFoodLevel());
           player.setExhaustion(hunger.getExhaustion());
           player.setSaturation(hunger.getSaturation());

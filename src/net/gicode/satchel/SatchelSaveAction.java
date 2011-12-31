@@ -26,13 +26,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 /**
- * TODO: Describe type
+ * Saves the satchel data for a specific player.
  */
-public class PlayerSaveAction {
+public class SatchelSaveAction {
   private Plugin plugin;
   private Player player;
 
-  public PlayerSaveAction(Plugin plugin, Player player) {
+  public SatchelSaveAction(Plugin plugin, Player player) {
     this.plugin = plugin;
     this.player = player;
   }
@@ -41,7 +41,7 @@ public class PlayerSaveAction {
     for (Satchel satchel : plugin.getSatchelsFor(player.getWorld())) {
       plugin.debug("Saving satchel '" + satchel.getName() + "' for player '"
           + player.getName() + "'.");
-      PlayerStorage storage = new PlayerStorage(plugin, player.getName(),
+      SatchelStorage storage = new SatchelStorage(plugin, player.getName(),
           satchel.getName());
 
       PlayerInventory inventory = player.getInventory();
@@ -49,14 +49,14 @@ public class PlayerSaveAction {
 
       storage.setBedLocation(player.getBedSpawnLocation());
 
-      storage.setExperience(new PlayerStorage.Experience(player.getLevel(),
+      storage.setExperience(new SatchelStorage.Experience(player.getLevel(),
           player.getExp()));
 
       storage.setGameMode(player.getGameMode().getValue());
 
       storage.setHealth(player.getHealth());
 
-      storage.setHunger(new PlayerStorage.Hunger(player.getFoodLevel(), player
+      storage.setHunger(new SatchelStorage.Hunger(player.getFoodLevel(), player
           .getExhaustion(), player.getSaturation()));
 
       storage.setInventory(Arrays.asList(inventory.getContents()));

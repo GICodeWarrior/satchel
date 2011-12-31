@@ -32,7 +32,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
- * TODO: Describe type
+ * Manages the set of satchels needed for each world, based on the configuration
+ * file.
  */
 public class SatchelConfig {
   private Plugin plugin;

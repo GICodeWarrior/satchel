@@ -45,6 +45,10 @@ public class Plugin extends JavaPlugin {
 
   @Override
   public void onEnable() {
+    debug = getConfig().getBoolean("debug");
+    getConfig().options().copyDefaults(true);
+    saveConfig();
+    
     log = Logger.getLogger("Minecraft");
     listener = new PlayerListener(this);
     satchels = new SatchelConfig(this, new File(this.getDataFolder(),

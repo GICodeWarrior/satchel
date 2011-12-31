@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * TODO: Describe type
+ * Manages the name and attributes of a generic satchel.
  */
 public class Satchel {
   public static final Set<String> ALL_ATTRIBUTES;
